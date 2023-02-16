@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // database
 const db = require("./app/models");
-const Role = db.role;
+// const Role = db.role;
 
 db.sequelize.sync();
 // force: true will drop the table if it already exists
@@ -32,7 +32,7 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to application." });
 });
 
 // routes

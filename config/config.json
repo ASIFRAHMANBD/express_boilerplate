@@ -1,11 +1,11 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "root",
     "password": "asif1234",
-    "database": "app_dev",
+    "database": "ozbangla",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "port":3000
+    "dialect": "mysql",
+    "port":3306
   },
   "test": {
     "username": "root",
@@ -15,12 +15,12 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "postgres",
+    "username": "root",
     "password": "asif1234",
-    "database": "app_prod",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
-    "port":8000
+    "database": "ozbangla_prod",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port":3306
 
   }
 }

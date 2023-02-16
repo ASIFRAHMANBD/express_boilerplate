@@ -1,36 +1,41 @@
 const db = require("../models");
-const ROLES = db.ROLES;
-const User = db.user;
+// const ROLES = db.ROLES;
+// const User = db.user;
+const User = require('../models/user.model')
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-  // Username
-  User.findOne({
-    where: {
-      username: req.body.username
-    }
-  }).then(user => {
-    if (user) {
-      res.status(400).send({
-        message: "Failed! Username is already in use!"
+
+  const signupDate = {
+    email: req.body.email,
+    username: req.body.username
+  }
+  User.findByEmailOrUserName(signupDate, (err, data) => {
+    if(data.length > 0){
+      res.status(500).send({
+        message: "duplicate username or email."
       });
       return;
     }
+    next();
+  });
 
-    // Email
-    User.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(user => {
-      if (user) {
-        res.status(400).send({
-          message: "Failed! Email is already in use!"
-        });
-        return;
-      }
+};
 
-      next();
-    });
+
+isAdmin = (req, res, next) => {
+  User.findById(req.userId, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "unauthorized."
+      });
+   
+    if(data[0].role != 1){
+      res.status(500).send({
+        message: "unauthorized."
+      });
+    }
+    next();
   });
 };
 

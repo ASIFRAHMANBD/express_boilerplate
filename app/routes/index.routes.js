@@ -1,7 +1,8 @@
 const { verifySignUp } = require("../middleware");
 const authRoute = require('../routes/auth.routes')
-const floorsRoute = require('../routes/floor.routes')
 const userRoute = require('../routes/user.routes')
+const courseCategoryRoute = require('../routes/course-category.router')
+const courseRoute = require('../routes/course.router')
 const router = require("express").Router();
 
 module.exports = function(app) {
@@ -14,7 +15,7 @@ module.exports = function(app) {
     });
   
     app.use("/api/auth", authRoute);
-    app.use('/api/floor', floorsRoute);
     app.use('/api/test', userRoute);
-
+    app.use('/api/course-category', courseCategoryRoute);
+    app.use('/api/course', courseRoute);
 }

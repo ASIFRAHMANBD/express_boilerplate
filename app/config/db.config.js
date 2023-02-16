@@ -6,7 +6,7 @@ module.exports = {
   USER: config.username,
   PASSWORD: config.password,
   DB: config.database,
-  dialect: "postgres",
+  dialect: "mysql",
   pool: {
     max: 5,
     min: 0,

@@ -11,8 +11,8 @@ router.use((req, res, next) => {
 }) 
 
 router.get("/all",userController.allAccess);
-router.post("/user", [authJwt.verifyToken],  userController.userBoard);
-router.post("/mod",[authJwt.verifyToken, authJwt.isModerator],  userController.moderatorBoard);
-router.post("/admin",[authJwt.verifyToken, authJwt.isAdmin],  userController.adminBoard);
+router.post("/user", [authJwt.verifyToken], userController.userBoard);
+// router.post("/mod",[authJwt.verifyToken, authJwt.isModerator],  userController.moderatorBoard);
+// router.post("/admin",[authJwt.verifyToken, authJwt.isAdmin],  userController.adminBoard);
 
 module.exports = router
